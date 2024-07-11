@@ -22,7 +22,7 @@ def login():
                 flash('Incorrect password, Please Try Again', category='error')
         else:
             flash('Email does not exist', category='error')
-    return render_template("login.html", boolean=True)
+    return render_template("login.html", user=current_user)
 
 
 @auth.route('/logout')
@@ -43,6 +43,7 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
         if user:
             flash('Email already exists', category='error')
+            return redirect(url_for('auth.sign_up'))
         elif len(email) < 4:
             flash('Email must be more than 3 characters', category='error')
         elif len(first_name) < 2:
@@ -60,4 +61,4 @@ def sign_up():
             return redirect(url_for('views.home'))
 
 
-    return render_template('sign_up.html')
+    return render_template('sign_up.html', user=current_user)
