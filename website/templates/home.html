@@ -18,16 +18,5 @@
     <button type="submit" class="btn btn-primary">Add Note</button>
   </div>
 </form>
-<script>
-  function deleteNote(noteId) {
-    fetch(`/delete-note/${noteId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((_res) => {
-      window.location.href = "/";
-    });
-  }
-</script>
+<script></script>
 {% endblock %}
